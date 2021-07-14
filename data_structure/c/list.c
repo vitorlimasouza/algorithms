@@ -1,18 +1,18 @@
 #include <stdlib.h>
 
-struct node{
+struct nodeList{
     int value;
-    struct node *next;
+    struct nodeList *next;
 };
 
 typedef struct list{
     int size;
-    struct node *head;
-    struct node *tail;
+    struct nodeList *head;
+    struct nodeList *tail;
 }List;
 
 List *createList();
-struct node *newNodeL(int value);
+struct nodeList *newNodeL(int value);
 void addEnd(List *list, int value);
 void insert(List *list, int value, int position);
 void freeList(List *list);
@@ -25,9 +25,9 @@ List *createList(){
     return n;
 }
 
-struct node *newNodeL(int value){
-    struct node *n; 
-    n = (struct node *) malloc(sizeof(List));
+struct nodeList *newNodeL(int value){
+    struct nodeList *n; 
+    n = (struct nodeList *) malloc(sizeof(struct nodeList));
     if(n == NULL) exit(1);
     n->value = value;
     n->next = NULL;
@@ -49,14 +49,14 @@ void addEnd(List *list, int value){
 void insert(List *list, int value, int position){
     int i = 0;
     if(list->head != NULL){
-        struct node *node;
+        struct nodeList *node;
         if(position == 0){
             node = newNodeL(value);
             node->next = list->head;
             list->head = node;
             list->size++;
             return;
-        }else for(struct node *temp = list->head;
+        }else for(struct nodeList *temp = list->head;
                 i <= position; 
                 temp = temp->next, i++){
             if(i == position - 1){
@@ -73,10 +73,3 @@ void insert(List *list, int value, int position){
     }
 }
 
-// void freeList(List **list){
-//     while((*list) != NULL){
-//         List *temp = (*list)->next;
-//         free((*list));
-//         (*list) = temp;
-//     }
-// }

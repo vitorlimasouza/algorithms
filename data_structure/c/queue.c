@@ -57,10 +57,3 @@ int deQueue(Queue *queue){
     }
 }
 
-// void freeQueue(Queue **queue){
-//     while((*queue) != NULL){
-//         Queue *tmp = (*queue)->next;
-//         free((*queue));
-//         (*queue) = tmp;
-//     }
-// }
